@@ -13,7 +13,9 @@ public class CartQuery {
     private final String SELECT_BY_ID = "SELECT FROM cart WHERE id=?";
     
     public boolean add(){
+        boolean success = false;
         
+        return success;
     }
     
     
