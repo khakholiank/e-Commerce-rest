@@ -10,43 +10,9 @@ import java.util.List;
  * @author Nikit Khakholia
  */
 public class Cart {
-    private int id;
-//    private LocalDateTime estDeliveryTime; 
-    private List<Product> products;
-    private Address deiveryAddress;
+    private int userId;
+    private int productId;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-//    public LocalDateTime getEstDeliveryTime() {
-//        return estDeliveryTime;
-//    }
-//
-//    public void setEstDeliveryTime(LocalDateTime estDeliveryTime) {
-//        this.estDeliveryTime = estDeliveryTime;
-//    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    public Address getDeiveryAddress() {
-        return deiveryAddress;
-    }
-
-    public void setDeiveryAddress(Address deiveryAddress) {
-        this.deiveryAddress = deiveryAddress;
-    }
-    
-    
-    
 }
