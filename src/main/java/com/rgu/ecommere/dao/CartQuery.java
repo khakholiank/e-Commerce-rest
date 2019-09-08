@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -12,9 +14,9 @@ import java.sql.SQLException;
  */
 public class CartQuery {
 
-    private final String ADD = "INSERT INTO cart(id, products, deliveryAddress) VALUES(?,?,?)";
+    private final String ADD = "INSERT INTO cart(userId, productId) VALUES(?,?)";
 
-    private final String UPDATE = "UPDATE cart SET products=?, deliveryAddress=? WHERE id=?";
+    private final String DELETE = "DELETE FROM cart WHERE userId=? AND productId=?";
 
     private final String SELECT_BY_ID = "SELECT FROM cart WHERE id=?";
 
@@ -23,9 +25,8 @@ public class CartQuery {
         try (Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(ADD)) {
             Cart c = new Cart();
-            ps.setInt(1, c.getId());
-            ps.setString(2, c.getProducts() + "");
-            ps.setInt(3, c.getDeiveryAddress().getAddressId());
+            ps.setInt(1, c.getUserId());
+            ps.setInt(2, c.getProducts().getId());
 
             success = ps.executeUpdate() == 1;
 
@@ -37,17 +38,16 @@ public class CartQuery {
         return success;
     }
 
-    public boolean update() {
+    public boolean delete() {
         boolean success = false;
         try (Connection con = Conn.getConnection();
-                PreparedStatement ps = con.prepareStatement(UPDATE)) {
+                PreparedStatement ps = con.prepareStatement(DELETE)) {
             Cart c = new Cart();
-            ps.setString(1, c.getProducts()+"");
-            ps.setInt(2, c.getDeiveryAddress().getAddressId());
-            ps.setInt(3, c.getId());
-            
-            success=ps.executeUpdate()==1;
-            
+            ps.setInt(1, c.getUserId());
+            ps.setInt(2, c.getProducts().getId());
+
+            success = ps.executeUpdate() == 1;
+
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
@@ -55,23 +55,31 @@ public class CartQuery {
         return success;
     }
 
-    public Cart selectById(int id){
+    private static Cart mapObject(ResultSet rs) throws SQLException {
+        Cart c = new Cart();
+        c.setUserId(rs.getInt(1));
+//            c.setProducts(Product.selectProductById(rs.......));
+        return c;
+    }
+
+    public List<Cart> selectById(int id) {
         boolean success = false;
-        try(Connection con = Conn.getConnection();
-                PreparedStatement ps = con.prepareStatement(SELECT_BY_ID)){
+        List<Cart> list = new ArrayList<>();
+        try (Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT_BY_ID)) {
             ps.setInt(1, id);
-            try(ResultSet rs = ps.executeQuery()){
-                while(rs.next()){
-                    Cart c = new Cart();
-                    c.setId(rs.getInt(1));
-                    c.setProducts(rs.getString(2));
-                    c.getDeiveryAddress().setAddressId(3);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+
+                    list.add(mapObject(rs));
+
                 }
             }
-            
-        }catch(SQLException ex){
+
+        } catch (SQLException ex) {
             System.err.println(ex.toString());
             return null;
         }
+        return list;
     }
 }
