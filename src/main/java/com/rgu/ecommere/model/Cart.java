@@ -7,7 +7,7 @@ package com.rgu.ecommere.model;
  */
 public class Cart {
     private int userId;
-    private int productId;
+    private Product products;
 
     public int getUserId() {
         return userId;
@@ -17,13 +17,14 @@ public class Cart {
         this.userId = userId;
     }
 
-    public int getProductId() {
-        return productId;
+    public Product getProducts() {
+        return products;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setProducts(Product products) {
+        this.products = products;
     }
+
     
     
 
