@@ -1,5 +1,5 @@
 
-package com.rgu.ecommere.model;
+package com.rgu.ecommerce.model;
 
 import com.rgu.ecommere.commons.Address;
 import java.time.LocalDateTime;

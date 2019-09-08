@@ -1,4 +1,4 @@
-package com.rgu.ecommere.dao;
+package com.rgu.ecommerce.dao;
 
 import com.rgu.ecommere.model.Cart;
 import java.sql.Connection;

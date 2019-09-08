@@ -1,5 +1,5 @@
 
-package com.rgu.ecommere.dao;
+package com.rgu.ecommerce.dao;
 
 
 import com.zaxxer.hikari.HikariConfig;

@@ -1,5 +1,5 @@
 
-package com.rgu.ecommere.commons;
+package com.rgu.ecommerce.commons;
 
 /**
  *
