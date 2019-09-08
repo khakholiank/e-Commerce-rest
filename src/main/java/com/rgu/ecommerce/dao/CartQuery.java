@@ -24,7 +24,7 @@ public class CartQuery {
         boolean success = false;
         try (Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(ADD)) {
-            
+
             ps.setInt(1, c.getUserId());
             ps.setInt(2, c.getProducts().getId());
 
@@ -57,7 +57,7 @@ public class CartQuery {
     private static Cart mapObject(ResultSet rs) throws SQLException {
         Cart c = new Cart();
         c.setUserId(rs.getInt(1));
-//            c.setProducts(Product.selectProductById(rs.......));
+        c.setProducts(ProductQuery.selectProductById(rs.getInt(2)));
         return c;
     }
 

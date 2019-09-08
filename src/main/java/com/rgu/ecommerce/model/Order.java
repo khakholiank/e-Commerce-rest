@@ -1,7 +1,7 @@
 
 package com.rgu.ecommerce.model;
 
-import com.rgu.ecommere.commons.Address;
+import com.rgu.ecommerce.commons.Address;
 import java.time.LocalDateTime;
 import java.util.List;
 
