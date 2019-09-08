@@ -1,6 +1,7 @@
 
 package com.rgu.ecommerce.model;
 
+import com.rgu.ecommerce.commons.Address;
 import com.rgu.ecommerce.commons.Name;
 import com.rgu.ecommerce.config.UserType;
 import java.time.LocalDate;
@@ -16,8 +17,8 @@ public class User {
     private UserType userType;
     private String occupation;
     private String password;
-    private int defaultAddress;
-    private Rating rating;
+    private Address defaultAddress;
+//    private Rating rating;
 
     public int getId() {
         return id;
@@ -27,12 +28,13 @@ public class User {
         this.id = id;
     }
 
-    public Name getName() {
-        return name;
+    public String getName() {
+        return name.getFirstName()+" "+name.getLastName();
     }
 
-    public void setName(Name name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name.setFirstName(name.split(name, 1)+"");
+        this.name.setLastName(name.split(name, 2)+"");
     }
 
     public LocalDate getBirthDate() {
@@ -67,21 +69,25 @@ public class User {
         this.password = password;
     }
 
-    public int getDefaultAddress() {
+    
+//
+//    public Rating getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(Rating rating) {
+//        this.rating = rating;
+//    }
+
+    public Address getDefaultAddress() {
         return defaultAddress;
     }
 
-    public void setDefaultAddress(int defaultAddress) {
+    public void setDefaultAddress(Address defaultAddress) {
         this.defaultAddress = defaultAddress;
     }
 
-    public Rating getRating() {
-        return rating;
-    }
-
-    public void setRating(Rating rating) {
-        this.rating = rating;
-    }
+    
     
     
     

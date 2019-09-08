@@ -6,27 +6,11 @@ package com.rgu.ecommerce.model;
  * @author Nikit Khakholia
  */
 public class Rating {
-    private int itemId;
-    private int sellerId;
+    private int id;
     private int score;
     private int description;
 
-    public int getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
-
-    public int getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
-    }
-
+   
     public int getScore() {
         return score;
     }
@@ -41,6 +25,14 @@ public class Rating {
 
     public void setDescription(int description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     
