@@ -1,6 +1,6 @@
 package com.rgu.ecommerce.dao;
 
-import com.rgu.ecommere.model.Cart;
+import com.rgu.ecommerce.model.Cart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,17 +14,17 @@ import java.util.List;
  */
 public class CartQuery {
 
-    private final String ADD = "INSERT INTO cart(userId, productId) VALUES(?,?)";
+    private static final String ADD = "INSERT INTO cart(userId, productId) VALUES(?,?)";
 
-    private final String DELETE = "DELETE FROM cart WHERE userId=? AND productId=?";
+    private static final String DELETE = "DELETE FROM cart WHERE userId=? AND productId=?";
 
-    private final String SELECT_BY_ID = "SELECT FROM cart WHERE id=?";
+    private static final String SELECT_BY_ID = "SELECT FROM cart WHERE userId=?";
 
-    public boolean add() {
+    public static boolean add(Cart c) {
         boolean success = false;
         try (Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(ADD)) {
-            Cart c = new Cart();
+            
             ps.setInt(1, c.getUserId());
             ps.setInt(2, c.getProducts().getId());
 
@@ -38,13 +38,12 @@ public class CartQuery {
         return success;
     }
 
-    public boolean delete() {
+    public static boolean delete(int userid, int productId) {
         boolean success = false;
         try (Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(DELETE)) {
-            Cart c = new Cart();
-            ps.setInt(1, c.getUserId());
-            ps.setInt(2, c.getProducts().getId());
+            ps.setInt(1, userid);
+            ps.setInt(2, productId);
 
             success = ps.executeUpdate() == 1;
 
@@ -62,7 +61,7 @@ public class CartQuery {
         return c;
     }
 
-    public List<Cart> selectById(int id) {
+    public static List<Cart> selectById(int id) {
         boolean success = false;
         List<Cart> list = new ArrayList<>();
         try (Connection con = Conn.getConnection();

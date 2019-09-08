@@ -11,11 +11,27 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
+        <!--HikariCP dependencies-->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>3.2.0</version>
         </dependency>
+        
+             
+       <!--Spring dependencies-->
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-web</artifactId>
+           <version>2.1.1.RELEASE</version>
+           <!-- Exclude the default Jackson dependency -->
+            <exclusions>
+                    <exclusion>
+                            <groupId>jackson-databaind</groupId>
+                            <artifactId>com.fasterxml.jackson.core</artifactId>
+                    </exclusion>
+            </exclusions>
+       </dependency>
     </dependencies>
     <name>eCommerce-rest</name>
 </project>
