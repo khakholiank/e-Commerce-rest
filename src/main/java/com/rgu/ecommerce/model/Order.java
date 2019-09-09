@@ -2,8 +2,8 @@
 package com.rgu.ecommerce.model;
 
 import com.rgu.ecommerce.commons.Address;
+import com.rgu.ecommerce.config.OrderStatus;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  *
@@ -16,8 +16,8 @@ public class Order {
     private LocalDateTime timeOfOrder;
     private Address deliveryAddress;
     private Address billingAddress;
-    private List<Product> listOfProducts;
-    private List listOfOty;
+    private Product product;
+    private int qty;
     private String trackingId;
     private LocalDateTime estDeliveryTime;
     private String promoCode;
@@ -25,7 +25,7 @@ public class Order {
     private double discApplied;
     private double deliveryFee;
     private double netAmount;
-    private String orderStatus;
+    private OrderStatus orderStatus;
 
     public String getPromoCode() {
         return promoCode;
@@ -67,13 +67,15 @@ public class Order {
         this.netAmount = netAmount;
     }
 
-    public String getOrderStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
+
+
 
     public int getId() {
         return id;
@@ -123,22 +125,24 @@ public class Order {
         this.billingAddress = billingAddress;
     }
 
-    public List<Product> getListOfProducts() {
-        return listOfProducts;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setListOfProducts(List<Product> listOfProducts) {
-        this.listOfProducts = listOfProducts;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public List getListOfOty() {
-        return listOfOty;
+    public int getQty() {
+        return qty;
     }
 
-    public void setListOfOty(List listOfOty) {
-        this.listOfOty = listOfOty;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
+   
+    
     public String getTrackingId() {
         return trackingId;
     }
