@@ -1,6 +1,8 @@
 
 package com.rgu.ecommerce.model;
 
+import com.rgu.ecommerce.config.UnitType;
+
 /**
  *
  * @author Nikit Khakholia
@@ -9,8 +11,9 @@ public class DeliveryTime {
     private int fromPincode;
     private int toPincode;
     private Double timeRequired;
-    private String units;
     private Double fee;
+    private UnitType units;
+
 
     public int getFromPincode() {
         return fromPincode;
@@ -36,13 +39,15 @@ public class DeliveryTime {
         this.timeRequired = timeRequired;
     }
 
-    public String getUnits() {
+    public UnitType getUnits() {
         return units;
     }
 
-    public void setUnits(String units) {
+    public void setUnits(UnitType units) {
         this.units = units;
     }
+
+
 
     public Double getFee() {
         return fee;
