@@ -1,36 +1,40 @@
 
 package com.rgu.ecommerce.model;
 
+import com.rgu.ecommerce.config.PromoType;
+
 /**
  *
  * @author Nikit Khakholia
  */
 public class PromoCode {
-    private int code;
-    private int type;//enum
-    private int amount;
+    private String code;
+    private PromoType type;
+    private Double amount;
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public int getType() {
+    public PromoType getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(PromoType type) {
         this.type = type;
     }
 
-    public int getAmount() {
+    
+
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
     
