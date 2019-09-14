@@ -24,6 +24,8 @@ public class RatingQuery {
     
     private static final String SELECT_BY_RATING_ID = "SELECT * FROM rating WHERE rating_id=?";
     
+//    private static final String SELECT_AVERAGE
+    
     public static boolean add(Rating r){
         boolean success = false;
         try(Connection con = Conn.getConnection();
