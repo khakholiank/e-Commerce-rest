@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Wishlist {
     private int id;
-    private List<Product> products;
+    private Product productId;
 
     public int getId() {
         return id;
@@ -19,13 +19,14 @@ public class Wishlist {
         this.id = id;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Product getProductId() {
+        return productId;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProductId(Product productId) {
+        this.productId = productId;
     }
+
     
     
 }

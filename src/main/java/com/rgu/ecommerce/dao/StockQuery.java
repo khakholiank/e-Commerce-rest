@@ -83,12 +83,12 @@ public class StockQuery {
     private static Stock mapObject(ResultSet rs)throws SQLException{
         Stock s = new Stock();
         s.setHubId(rs.getInt(1));
-        s.setProductId(ProductQuery.selectProductById(2));
-        s.setSellerId(UserQuery.selectUserById(3));
+        s.setProductId(ProductQuery.selectProductById(rs.getInt(2)));
+        s.setSellerId(UserQuery.selectUserById(rs.getInt(3)));
         s.setQty(rs.getInt(4));
         s.setRate(rs.getDouble(5));
-        s.setUnits(UnitType.valueOf(6));
-        s.setRatingId(RatingQuery.selectByRatingId(7));
+        s.setUnits(UnitType.valueOf(rs.getInt(7)));
+        s.setRatingId(RatingQuery.selectByRatingId(rs.getInt(7)));
         return s;
     }
     
