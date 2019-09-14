@@ -1,18 +1,20 @@
 
 package com.rgu.ecommerce.model;
 
+import com.rgu.ecommerce.config.UnitType;
+
 /**
  *
  * @author Nikit Khakholia
  */
 public class Stock {
     private int hubId;
-    private int productId;
-    private int sellerId;
+    private Product productId;
+    private User sellerId;
     private int qty;
-    private int rate;
-    private int units;
-    private Rating rateing;
+    private Double rate;
+    private UnitType units;
+    private Rating ratingId;
 
     public int getHubId() {
         return hubId;
@@ -22,19 +24,19 @@ public class Stock {
         this.hubId = hubId;
     }
 
-    public int getProductId() {
+    public Product getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Product productId) {
         this.productId = productId;
     }
 
-    public int getSellerId() {
+    public User getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(int sellerId) {
+    public void setSellerId(User sellerId) {
         this.sellerId = sellerId;
     }
 
@@ -46,29 +48,30 @@ public class Stock {
         this.qty = qty;
     }
 
-    public int getRate() {
+    public Double getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(Double rate) {
         this.rate = rate;
     }
 
-    public int getUnits() {
+    public UnitType getUnits() {
         return units;
     }
 
-    public void setUnits(int units) {
+    public void setUnits(UnitType units) {
         this.units = units;
     }
 
-    public Rating getRateing() {
-        return rateing;
+    public Rating getRatingId() {
+        return ratingId;
     }
 
-    public void setRateing(Rating rateing) {
-        this.rateing = rateing;
+    public void setRatingId(Rating ratingId) {
+        this.ratingId = ratingId;
     }
-    
+
+
     
 }
