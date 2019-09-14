@@ -7,8 +7,17 @@ package com.rgu.ecommerce.model;
  */
 public class Rating {
     private int id;
+    private int ratingId;
     private int score;
-    private int description;
+    private String description;
+
+    public int getRatingId() {
+        return ratingId;
+    }
+
+    public void setRatingId(int ratingId) {
+        this.ratingId = ratingId;
+    }
 
    
     public int getScore() {
@@ -19,11 +28,11 @@ public class Rating {
         this.score = score;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(int description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
