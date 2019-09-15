@@ -105,7 +105,7 @@ public class ProductQuery {
         return product;
     }
 
-    public static List<Product> seleAllProducts(){
+    public static List<Product> selectAllProducts(){
         List<Product> list = new ArrayList<>();
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(SELECT_ALL)){
