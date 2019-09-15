@@ -108,7 +108,7 @@ public class UserQuery {
         return u;
     }
     
-    public static List<User> selectAll(int id){
+    public static List<User> selectAll(){
         List<User> list = new ArrayList<>();
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(SELECT_ALL)){
