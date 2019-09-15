@@ -199,7 +199,7 @@ public class OrderQuery {
         return o;
     }
     
-    private static List<Order> getOrderById(int id){
+    public static List<Order> getOrderById(int id){
         List<Order> list = new ArrayList<>();
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(SELECT_BY_ORDER_ID)){
@@ -216,7 +216,7 @@ public class OrderQuery {
         return list;
     }
     
-    private static List<Order> getOrderByCustId(int id){
+    public static List<Order> getOrderByCustId(int id){
         List<Order> list = new ArrayList<>();
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(SELECT_BY_CUSTOMER_ID)){
@@ -233,10 +233,10 @@ public class OrderQuery {
         return list;
     }
     
-    private static List<Order> getOrderBySellerId(int id){
+    public static List<Order> getOrderBySellerId(int id){
         List<Order> list = new ArrayList<>();
         try(Connection con = Conn.getConnection();
-                PreparedStatement ps = con.prepareStatement(SELECT_BY_SELLER_ID)){
+                PreparedStatement ps = con.prepareStatement(SELECT_ALL)){
             ps.setInt(1, id);
             try(ResultSet rs = ps.executeQuery()){
                 while(rs.next()){
@@ -249,7 +249,7 @@ public class OrderQuery {
         }
         return list;
     }
-    private static List<Order> getAllOrders(){
+    public static List<Order> getAllOrders(){
         List<Order> list = new ArrayList<>();
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(SELECT_BY_ORDER_ID)){
@@ -266,20 +266,3 @@ public class OrderQuery {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
