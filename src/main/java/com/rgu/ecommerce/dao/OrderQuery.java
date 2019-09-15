@@ -18,24 +18,6 @@ import java.util.List;
  * @author Nikit Khakholia
  */
 
-//    private int id;
-//    private int sellerId;
-//    private int custId;
-//    private LocalDateTime timeOfOrder;
-//    private Address deliveryAddress;
-
-//    private Address billingAddress;
-//    private Product product;
-//    private int qty;
-//    private String trackingId;
-//    private LocalDateTime estDeliveryTime;
-//    private String promoCode;
-//    private double grossAmount;
-//    private double discApplied;
-//    private double deliveryFee;
-//    private double netAmount;
-//    private OrderStatus orderStatus;
-
 
 public class OrderQuery {
     
