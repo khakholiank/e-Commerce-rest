@@ -43,7 +43,7 @@ public class OrderQuery {
             ps.setInt(1, o.getId());
             ps.setInt(2, o.getSellerId());
             ps.setInt(3, o.getCustId());
-            ps.setTimestamp(4, java.sql.Timestamp(o.getTimeOfOrder()));
+            ps.setTimestamp(4, java.sql.Timestamp.valueOf(o.getTimeOfOrder()));
             ps.setInt(5, o.getDeliveryAddress().getAddressId());
             ps.setString(6, o.getDeliveryAddress().getLine1());
             ps.setString(7, o.getDeliveryAddress().getLine2());
@@ -66,7 +66,7 @@ public class OrderQuery {
             ps.setInt(24, o.getProduct().getImgMediaId());
             ps.setInt(25, o.getQty());
             ps.setString(26, o.getTrackingId());
-            ps.setTimestamp(27, java.sql.Timestamp(o.getEstDeliveryTime()));
+            ps.setTimestamp(27, java.sql.Timestamp.valueOf(o.getEstDeliveryTime()));
             ps.setString(28, o.getPromoCode());
             ps.setDouble(29, o.getGrossAmount());
             ps.setDouble(30, o.getDiscApplied());
@@ -89,7 +89,7 @@ public class OrderQuery {
                 PreparedStatement ps = con.prepareStatement(UPDATE)) {
             ps.setInt(1, o.getSellerId());
             ps.setInt(2, o.getCustId());
-            ps.setTimestamp(3, java.sql.Timestamp(o.getTimeOfOrder()));
+            ps.setTimestamp(3, java.sql.Timestamp.valueOf(o.getTimeOfOrder()));
             ps.setInt(4, o.getDeliveryAddress().getAddressId());
             ps.setString(5, o.getDeliveryAddress().getLine1());
             ps.setString(6, o.getDeliveryAddress().getLine2());
@@ -112,7 +112,7 @@ public class OrderQuery {
             ps.setInt(23, o.getProduct().getImgMediaId());
             ps.setInt(24, o.getQty());
             ps.setString(25, o.getTrackingId());
-            ps.setTimestamp(26, java.sql.Timestamp(o.getEstDeliveryTime()));
+            ps.setTimestamp(26, java.sql.Timestamp.valueOf(o.getEstDeliveryTime()));
             ps.setString(27, o.getPromoCode());
             ps.setDouble(28, o.getGrossAmount());
             ps.setDouble(29, o.getDiscApplied());
