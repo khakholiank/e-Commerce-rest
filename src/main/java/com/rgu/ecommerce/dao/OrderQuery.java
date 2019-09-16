@@ -153,24 +153,24 @@ public class OrderQuery {
         Address dA = new Address();
         dA.setAddressId(rs.getInt(5));
         dA.setLine1(rs.getString(6));
-        dA.setLine2(rs.getString(7));
-        dA.setLocality(rs.getInt(8));
-        dA.setCity(rs.getInt(9));
-        dA.setState(rs.getInt(10));
-        dA.setCountry(rs.getInt(11));
-        dA.setPhone(rs.getInt(12));
-        o.setDeliveryAddress(dA);
-
-        Address bA = new Address();
-        bA.setAddressId(rs.getInt(13));
-        bA.setLine1(rs.getString(14));
-        bA.setLine2(rs.getString(15));
-        bA.setLocality(rs.getInt(16));
-        bA.setCity(rs.getInt(17));
-        bA.setState(rs.getInt(18));
-        bA.setCountry(rs.getInt(19));
-        bA.setPhone(rs.getInt(20));
-        o.setDeliveryAddress(bA);
+//        dA.setLine2(rs.getString(7));
+//        dA.setLocality(rs.getInt(8));
+//        dA.setCity(rs.getInt(9));
+//        dA.setState(rs.getInt(10));
+//        dA.setCountry(rs.getInt(11));
+//        dA.setPhone(rs.getInt(12));
+//        o.setDeliveryAddress(dA);
+//
+//        Address bA = new Address();
+//        bA.setAddressId(rs.getInt(13));
+//        bA.setLine1(rs.getString(14));
+//        bA.setLine2(rs.getString(15));
+//        bA.setLocality(rs.getInt(16));
+//        bA.setCity(rs.getInt(17));
+//        bA.setState(rs.getInt(18));
+//        bA.setCountry(rs.getInt(19));
+//        bA.setPhone(rs.getInt(20));
+//        o.setDeliveryAddress(bA);
 //        "INSERT INTO order(id,seller_id,cust_id,time_of_order,d_address_id,d_line_1,d_line_2,d_locality_id,d_city_id,"
 //            + "d_state_id,d_country_id,d_phone,b_address_id,b_line_1,b_line_2,b_locality_id,b_city_id,b_state,b_country,b_phone,item_id,item_name,item_desc,"
 //            + "item_img_media_id,qty,tracking_id,est_delivery_time,promocode,gross_amt,disc_applied,delivery_fee,net_amount,order_status_code) "
