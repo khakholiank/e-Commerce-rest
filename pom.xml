@@ -33,7 +33,7 @@
             </exclusions>
        </dependency>
        
-               <dependency>
+<!--               <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.5</version>
@@ -43,6 +43,9 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.24</version>
         </dependency>
+       
+       -->
+       
        
        
        <!--Swagger Docs-->
@@ -67,12 +70,12 @@
     </dependencies>
     <name>eCommerce-rest</name>
     
-     <build>
+<!--     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>

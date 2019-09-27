@@ -14,13 +14,13 @@ import java.util.List;
  * @author Nikit Khakholia
  */
 public class RatingQuery {
-    private static final String ADD = "INSERT INTO rating(id,rating_id,score,description)VALUES(?,?,?)";
+    private static final String ADD = "INSERT INTO rating(user_id,rating_id,score,description)VALUES(?,?,?)";
     
-    private static final String UPDATE = "UPDATE rating SET id=?,score=?, description=? WHERE rating_id=?";
+    private static final String UPDATE = "UPDATE rating SET user_id=?,score=?, description=? WHERE rating_id=?";
     
     private static final String DELETE = "DELETE FROM rating WHERE rating_id=?";
     
-    private static final String SELECT_BY_ID = "SELECT * FROM rating WHERE id=?";
+    private static final String SELECT_BY_ID = "SELECT * FROM rating WHERE user_id=?";
     
     private static final String SELECT_BY_RATING_ID = "SELECT * FROM rating WHERE rating_id=?";
     

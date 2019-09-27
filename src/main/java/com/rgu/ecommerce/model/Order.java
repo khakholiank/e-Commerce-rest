@@ -11,21 +11,53 @@ import java.time.LocalDateTime;
  */
 public class Order {
     private int id;
-    private int sellerId;
+//    private int sellerId;
     private int custId;
     private LocalDateTime timeOfOrder;
-    private Address deliveryAddress;
+//    private Address deliveryAddress;
     private Address billingAddress;
-    private Product product;
-    private int qty;
-    private String trackingId;
-    private LocalDateTime estDeliveryTime;
+//    private Product product;
+//    private int qty;
+//    private String trackingId;
+//    private LocalDateTime estDeliveryTime;
     private String promoCode;
     private double grossAmount;
     private double discApplied;
     private double deliveryFee;
     private double netAmount;
     private OrderStatus orderStatus;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCustId() {
+        return custId;
+    }
+
+    public void setCustId(int custId) {
+        this.custId = custId;
+    }
+
+    public LocalDateTime getTimeOfOrder() {
+        return timeOfOrder;
+    }
+
+    public void setTimeOfOrder(LocalDateTime timeOfOrder) {
+        this.timeOfOrder = timeOfOrder;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
 
     public String getPromoCode() {
         return promoCode;
@@ -76,89 +108,5 @@ public class Order {
     }
 
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    public int getCustId() {
-        return custId;
-    }
-
-    public void setCustId(int custId) {
-        this.custId = custId;
-    }
-
-    public LocalDateTime getTimeOfOrder() {
-        return timeOfOrder;
-    }
-
-    public void setTimeOfOrder(LocalDateTime timeOfOrder) {
-        this.timeOfOrder = timeOfOrder;
-    }
-
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-    public Address getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(Address billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
-
-   
-    
-    public String getTrackingId() {
-        return trackingId;
-    }
-
-    public void setTrackingId(String trackingId) {
-        this.trackingId = trackingId;
-    }
-
-    public LocalDateTime getEstDeliveryTime() {
-        return estDeliveryTime;
-    }
-
-    public void setEstDeliveryTime(LocalDateTime estDeliveryTime) {
-        this.estDeliveryTime = estDeliveryTime;
-    }
-    
-    
     
 }

@@ -15,9 +15,9 @@ import java.util.List;
  * @author Nikit Khakholia
  */
 public class StockQuery {
-    private static final String ADD = "INSERT INTO stock(hub_id,product_id,seller_id,qty,rate,units,ratingId)VALUES(?,?,?,?,?,?,?)";
+    private static final String ADD = "INSERT INTO stock(hub_id,product_id,seller_id,qty,rate,units,rating_id)VALUES(?,?,?,?,?,?,?)";
     
-    private static final String UPDATE = "UPDATE stock SET hub_id=?,qty=?,rate=?,units=?,ratingId=? WHERE product_id=? AND seller_id=?";
+    private static final String UPDATE = "UPDATE stock SET hub_id=?,qty=?,rate=?,units=?,rating_id=? WHERE product_id=? AND seller_id=?";
     
     private static final String DELETE = "DELETE FROM stock where product_id=? AND seller_id=?";
     
