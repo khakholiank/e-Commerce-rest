@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Nikit Khakholia
  */
 @RestController
-@RequestMapping("order/")
+@RequestMapping("/order")
 public class OrderController {
     @PostMapping("add")
     public static boolean add(@RequestBody Order o){
@@ -44,7 +44,7 @@ public class OrderController {
     public static List<Order> selectOrderById(@PathVariable int id){
         return OrderQuery.getOrderById(id);
     }
-    @GetMapping("all")
+    @GetMapping("/all")
     public static List<Order> selectAllOrders(){
         return OrderQuery.getAllOrders();
     }

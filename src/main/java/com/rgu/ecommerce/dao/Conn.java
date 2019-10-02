@@ -10,7 +10,7 @@ public class Conn {
 
     static {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce", "root", "sql1");
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }

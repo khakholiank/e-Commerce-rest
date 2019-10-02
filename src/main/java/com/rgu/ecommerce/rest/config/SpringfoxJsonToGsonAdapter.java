@@ -1,5 +1,5 @@
 
-package com.sdigitizers.tms.rest.config;
+package com.rgu.ecommerce.rest.config;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

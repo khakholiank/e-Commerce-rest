@@ -1,4 +1,4 @@
-package com.sdigitizers.tms.rest.config;
+package com.rgu.ecommerce.rest.config;
 
 public class CustomException extends RuntimeException {
 
