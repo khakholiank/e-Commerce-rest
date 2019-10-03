@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class OrderQuery {
 
-    private static final String ADD = "INSERT INTO order(id,cust_id,time_of_order, b_address_id,b_line_1,b_line_2,b_locality_id,b_city_id,b_state,"
-            + "b_country,b_phone,promocode,gross_amt,disc_applied,delivery_fee,net_amount,order_status_code) "
+    private static final String ADD = "INSERT INTO order(id,cust_id,time_of_order, b_address_id,b_line_1,b_line_2,b_locality_id,b_city_id,b_state_id,"
+            + "b_country_id,b_phone,promocode,gross_amt,disc_applied,delivery_fee,net_amount,order_status_code) "
             + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     private static final String UPDATE = "UPDATE order SET cust_id=?,time_of_order=?, b_address_id=?,b_line_1=?,b_line_2=?,b_locality_id=?,b_city_id=?,"
