@@ -3,20 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rgu.ecommerce.config;
-
-import com.rgu.ecommerce.commons.*;
+package com.rgu.ecommerce.model.config;
 
 /**
  *
  * @author Nikit Khakholia
  */
-public enum UnitType {
-    Hrs(0),Min(1),Rs(2), Sec(3);
-    
+public enum OrderStatus {
+    ORDERED(0),SHIPPED(2),DELIVERED(3),PROCESSED(4),PACKED(5);
     
     private final int code;
-    private UnitType(int code){
+    private OrderStatus(int code){
         this.code = code;
     }
     
@@ -24,12 +21,12 @@ public enum UnitType {
         return this.code;
     }
     
-    public static UnitType valueOf(int code){
+    public static OrderStatus valueOf(int code){
         switch(code){
-            case 0 : return Hrs;
-            case 1 : return Min;
-            case 2 : return Rs;
-            default: return Sec;
+            case 0 : return ORDERED;
+            case 1 : return SHIPPED;
+            case 2 : return DELIVERED;
+            default: return PROCESSED;
         }
     }
 }

@@ -1,7 +1,7 @@
 
 package com.rgu.ecommerce.model;
 
-import com.rgu.ecommerce.config.PromoType;
+import com.rgu.ecommerce.model.config.PromoType;
 
 /**
  *

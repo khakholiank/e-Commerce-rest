@@ -1,7 +1,7 @@
 
 package com.rgu.ecommerce.dao;
 
-import com.rgu.ecommerce.config.UserType;
+import com.rgu.ecommerce.model.config.UserType;
 import com.rgu.ecommerce.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import com.rgu.ecommerce.dao.conn.Conn;
 
 /**
  *

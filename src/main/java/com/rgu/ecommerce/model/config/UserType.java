@@ -1,5 +1,5 @@
 
-package com.rgu.ecommerce.config;
+package com.rgu.ecommerce.model.config;
 
 /**
  *

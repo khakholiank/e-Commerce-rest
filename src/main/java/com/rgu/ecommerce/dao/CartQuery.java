@@ -1,5 +1,6 @@
 package com.rgu.ecommerce.dao;
 
+import com.rgu.ecommerce.dao.conn.Conn;
 import com.rgu.ecommerce.model.Cart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

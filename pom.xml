@@ -70,6 +70,12 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>-->
+        <dependency>
+            <groupId>com.sdigitizers.util</groupId>
+            <artifactId>sd-commons</artifactId>
+            <version>1.0.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
    
     <build>

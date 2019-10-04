@@ -1,9 +1,9 @@
 
 package com.rgu.ecommerce.model;
 
-import com.rgu.ecommerce.commons.Address;
-import com.rgu.ecommerce.commons.Name;
-import com.rgu.ecommerce.config.UserType;
+import com.rgu.ecommerce.model.commons.Address;
+import com.rgu.ecommerce.model.commons.Name;
+import com.rgu.ecommerce.model.config.UserType;
 import java.time.LocalDate;
 
 /**

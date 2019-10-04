@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import com.rgu.ecommerce.dao.conn.Conn;
+
 
 /**
  *
@@ -110,7 +112,9 @@ public class ProductQuery {
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(SELECT_ALL)){
             try(ResultSet rs = ps.executeQuery()){
-                list.add(mapObject(rs));
+                while(rs.next()){
+                    list.add(mapObject(rs));
+                }
             }
         }catch(SQLException ex){
             System.err.println(ex.toString());

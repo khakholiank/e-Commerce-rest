@@ -1,7 +1,7 @@
 
 package com.rgu.ecommerce.model;
 
-import com.rgu.ecommerce.config.UnitType;
+import com.rgu.ecommerce.model.config.UnitType;
 
 /**
  *

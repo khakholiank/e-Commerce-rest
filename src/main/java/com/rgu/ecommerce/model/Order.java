@@ -1,8 +1,8 @@
 
 package com.rgu.ecommerce.model;
 
-import com.rgu.ecommerce.commons.Address;
-import com.rgu.ecommerce.config.OrderStatus;
+import com.rgu.ecommerce.model.commons.Address;
+import com.rgu.ecommerce.model.config.OrderStatus;
 import java.time.LocalDateTime;
 
 /**

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductControler {
     @PostMapping("add")
     public static boolean add(@RequestBody Product p){
+        System.out.println(p.toString());
         return ProductQuery.add(p);
     }
     

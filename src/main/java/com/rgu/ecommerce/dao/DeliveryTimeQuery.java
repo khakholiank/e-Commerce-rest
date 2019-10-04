@@ -1,7 +1,8 @@
 
 package com.rgu.ecommerce.dao;
 
-import com.rgu.ecommerce.config.UnitType;
+import com.rgu.ecommerce.dao.conn.Conn;
+import com.rgu.ecommerce.model.config.UnitType;
 import com.rgu.ecommerce.model.DeliveryTime;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
