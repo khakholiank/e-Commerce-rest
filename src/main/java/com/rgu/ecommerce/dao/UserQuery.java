@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.rgu.ecommerce.dao.conn.Conn;
+import com.rgu.ecommerce.model.commons.Address;
 
 /**
  *
@@ -88,7 +89,9 @@ public class UserQuery {
             u.setUserType(UserType.valueOf(rs.getInt(4)));
             u.setOccupation(rs.getString(5));
             u.setPassword(rs.getString(6));
-            u.getDefaultAddress().setAddressId(rs.getInt(7));
+            Address a = new Address();
+            a.setAddressId(rs.getInt(7));
+            u.setDefaultAddress(a);
         return u;
     }
     

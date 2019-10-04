@@ -2,7 +2,6 @@
 package com.rgu.ecommerce.model;
 
 import com.rgu.ecommerce.model.commons.Address;
-import com.rgu.ecommerce.model.commons.Name;
 import com.rgu.ecommerce.model.config.UserType;
 import java.time.LocalDate;
 
@@ -12,7 +11,7 @@ import java.time.LocalDate;
  */
 public class User {
     private int id;
-    private Name name;
+    private String name;
     private LocalDate birthDate;
     private UserType userType;
     private String occupation;
@@ -29,13 +28,14 @@ public class User {
     }
 
     public String getName() {
-        return name.getFirstName()+" "+name.getLastName();
+        return name;
     }
 
     public void setName(String name) {
-        this.name.setFirstName(name.split(name, 1)+"");
-        this.name.setLastName(name.split(name, 2)+"");
+        this.name = name;
     }
+
+    
 
     public LocalDate getBirthDate() {
         return birthDate;

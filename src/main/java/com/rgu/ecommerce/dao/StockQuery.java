@@ -16,9 +16,9 @@ import com.rgu.ecommerce.dao.conn.Conn;
  * @author Nikit Khakholia
  */
 public class StockQuery {
-    private static final String ADD = "INSERT INTO stock(hub_id,product_id,seller_id,qty,rate,units,rating_id)VALUES(?,?,?,?,?,?,?)";
+    private static final String ADD = "INSERT INTO stock(hub_id,product_id,seller_id,qty,rate,units)VALUES(?,?,?,?,?,?)";
     
-    private static final String UPDATE = "UPDATE stock SET hub_id=?,qty=?,rate=?,units=?,rating_id=? WHERE product_id=? AND seller_id=?";
+    private static final String UPDATE = "UPDATE stock SET hub_id=?,qty=?,rate=?,units=? WHERE product_id=? AND seller_id=?";
     
     private static final String DELETE = "DELETE FROM stock where product_id=? AND seller_id=?";
     
@@ -36,7 +36,6 @@ public class StockQuery {
             ps.setInt(4, s.getQty());
             ps.setDouble(5, s.getRate());
             ps.setInt(6, s.getUnits().getCode());
-            ps.setInt(7, s.getRatingId().getRatingId());
             
             success = ps.executeUpdate()==1;
         }catch(SQLException ex){
@@ -54,10 +53,9 @@ public class StockQuery {
             ps.setInt(2, s.getQty());
             ps.setDouble(3, s.getRate());
             ps.setInt(4, s.getUnits().getCode());
-            ps.setInt(5, s.getRatingId().getRatingId());
             
-            ps.setInt(6, s.getProductId().getId());
-            ps.setInt(7, s.getSellerId().getId());
+            ps.setInt(5, s.getProductId().getId());
+            ps.setInt(6, s.getSellerId().getId());
             
             success = ps.executeUpdate()==1;
         }catch(SQLException ex){
@@ -88,8 +86,7 @@ public class StockQuery {
         s.setSellerId(UserQuery.selectUserById(rs.getInt(3)));
         s.setQty(rs.getInt(4));
         s.setRate(rs.getDouble(5));
-        s.setUnits(UnitType.valueOf(rs.getInt(7)));
-        s.setRatingId(RatingQuery.selectByRatingId(rs.getInt(7)));
+        s.setUnits(UnitType.valueOf(rs.getInt(6)));
         return s;
     }
     
