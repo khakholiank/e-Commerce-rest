@@ -17,7 +17,6 @@ public class User {
     private String occupation;
     private String password;
     private Address defaultAddress;
-//    private Rating rating;
 
     public int getId() {
         return id;

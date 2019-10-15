@@ -17,7 +17,7 @@ import com.rgu.ecommerce.model.commons.Address;
  * @author Nikit Khakholia
  */
 public class UserQuery {
-    private static final String ADD = "INSERT INTO user(id,name,dob,user_type,occupation, password,default_address_id) VALUES(?,?,?,?,?,?,?)";
+    private static final String ADD = "INSERT INTO user(name,dob,user_type,occupation, password,default_address_id) VALUES(?,?,?,?,?,?)";
     
     private static final String UPDATE = "UPDATE user SET name=?,dob=?,user_type=?,occupation=?, password=?,default_address_id=? WHERE id=?";
     
@@ -27,18 +27,25 @@ public class UserQuery {
     
     private static final String SELECT_ALL = "SELECT * FROM user";
     
+    private static final String SELECT_SELLERS = "SELECT * FROM user WHERE user_type=0";
+    
+    private static final String SELECT_BUYERS = "SELECT * FROM user WHERE user_type=1";
+    
+    private static final String SELECT_ADMIN = "SELECT * FROM user WHERE user_type=2";
+    
     public static boolean add(User u){
         boolean success = false;
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(ADD)){
-            ps.setInt(1, u.getId());
             ps.setString(2, u.getName());
             ps.setDate(3, java.sql.Date.valueOf(u.getBirthDate()));
             ps.setInt(4, u.getUserType().getCode());
             ps.setString(5, u.getOccupation());
             ps.setString(6, u.getPassword());
             ps.setInt(7, u.getDefaultAddress().getAddressId());
-            
+            try(ResultSet rs = ps.getGeneratedKeys()){
+                u.setId(rs.getInt(1));
+            }
             success=ps.executeUpdate()==1;
         }catch(SQLException ex){
             System.err.println(ex.toString());
@@ -116,6 +123,54 @@ public class UserQuery {
         List<User> list = new ArrayList<>();
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(SELECT_ALL)){
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    list.add(mapObject(rs));
+                }
+            }
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+            return null;
+        }
+        return list;
+    }
+    
+    public static List<User> selectSellers(){
+        List<User> list = new ArrayList<>();
+        try(Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT_SELLERS)){
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    list.add(mapObject(rs));
+                }
+            }
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+            return null;
+        }
+        return list;
+    }
+    
+    public static List<User> selectBuyers(){
+        List<User> list = new ArrayList<>();
+        try(Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT_BUYERS)){
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    list.add(mapObject(rs));
+                }
+            }
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+            return null;
+        }
+        return list;
+    }
+    
+    public static List<User> selectAdmins(){
+        List<User> list = new ArrayList<>();
+        try(Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT_ADMIN)){
             try(ResultSet rs = ps.executeQuery()){
                 while(rs.next()){
                     list.add(mapObject(rs));

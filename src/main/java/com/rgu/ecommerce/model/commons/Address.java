@@ -1,19 +1,19 @@
 
 package com.rgu.ecommerce.model.commons;
 
+import com.rgu.ecommerce.model.User;
+
 /**
  *
  * @author Nikit Khakholia
  */
 public class Address {
     private int addressId;
-    private int userId;
+    private User userId;
     private String line1;
     private String line2;
     private Locality locality;
-    private City city;
-    private State state;
-    private Country country;
+
     private int phone;
 
     public int getAddressId() {
@@ -24,13 +24,7 @@ public class Address {
         this.addressId = addressId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+   
 
     public String getLine1() {
         return line1;
@@ -56,30 +50,6 @@ public class Address {
         this.locality = locality;
     }
 
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public State getState() {
-        return state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
     public int getPhone() {
         return phone;
     }
@@ -87,6 +57,14 @@ public class Address {
     public void setPhone(int phone) {
         this.phone = phone;
     }
-    
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
+
     
 }

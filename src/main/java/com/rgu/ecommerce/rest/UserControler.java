@@ -44,4 +44,22 @@ public class UserControler {
     public static User selectById(@PathVariable int id){
         return UserQuery.selectUserById(id);
     }
+    
+    @GetMapping("seller/all")
+    public static List<User> selectSellers(){
+        return UserQuery.selectSellers();
+    }
+    
+    
+    @GetMapping("buyer/all")
+    public static List<User> selectBuyers(){
+        return UserQuery.selectBuyers();
+    }
+    
+    
+    @GetMapping("admin/all")
+    public static List<User> selectAdmins(){
+        return UserQuery.selectAdmins();
+    }
+    
 }

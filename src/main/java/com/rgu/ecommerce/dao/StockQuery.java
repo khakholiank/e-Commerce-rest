@@ -35,7 +35,6 @@ public class StockQuery {
             ps.setInt(3, s.getSellerId().getId());
             ps.setInt(4, s.getQty());
             ps.setDouble(5, s.getRate());
-            ps.setInt(6, s.getUnits().getCode());
             
             success = ps.executeUpdate()==1;
         }catch(SQLException ex){

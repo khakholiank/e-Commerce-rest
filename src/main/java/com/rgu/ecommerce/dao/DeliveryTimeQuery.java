@@ -17,13 +17,13 @@ import java.util.List;
  */
 public class DeliveryTimeQuery {
 
-    private static final String ADD = "INSERT INTO delivery_time(fromPincode, toPincode, timeRequired, fee, unitType)VALUES(?,?,?,?,?)";
+    private static final String ADD = "INSERT INTO delivery_time(from_pincode, to_pincode, reqd_time, fee, units)VALUES(?,?,?,?,?)";
     
-    private static final String UPDATE = "UPDATE delivery_time SET timeRequired=?, fee=?, unitType=? WHERE fromPincode=? AND toPincode=?";
+    private static final String UPDATE = "UPDATE delivery_time SET reqd_time=?, fee=?, units=? WHERE from_pincode=? AND to_pincode=?";
     
-    private static final String DELETE = "DELETE FROM delivery_time WHERE fromPincode=? AND toPincode=?";
+    private static final String DELETE = "DELETE FROM delivery_time WHERE from_pincode=? AND to_pincode=?";
     
-    private static final String SELECT_BY_ID = "SELECT * FROM delivery_time WHERE fromPincode=? AND toPincode=?";
+    private static final String SELECT_BY_ID = "SELECT * FROM delivery_time WHERE from_pincode=? AND to_pincode=?";
     
     private static final String SELECT_ALL = "SELECT * FROM delivery_time";
     

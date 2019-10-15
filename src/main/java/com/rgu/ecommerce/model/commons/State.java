@@ -7,7 +7,7 @@ package com.rgu.ecommerce.model.commons;
  */
 public class State {
     private int stateId;
-    private int stateName;
+    private String stateName;
 
     public int getStateId() {
         return stateId;
@@ -17,11 +17,11 @@ public class State {
         this.stateId = stateId;
     }
 
-    public int getStateName() {
+    public String getStateName() {
         return stateName;
     }
 
-    public void setStateName(int stateName) {
+    public void setStateName(String stateName) {
         this.stateName = stateName;
     }
     

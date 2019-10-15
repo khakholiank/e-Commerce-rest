@@ -16,7 +16,7 @@ import com.rgu.ecommerce.dao.conn.Conn;
  * @author Nikit Khakholia
  */
 public class ProductQuery {
-    private static final String ADD = "INSERT INTO product(id,name_of_item,description,tags,image_media_id) VALUES(?,?,?,?,?)";
+    private static final String ADD = "INSERT INTO product(name_of_item,description,tags,image_media_id) VALUES(?,?,?,?)";
     
     private static final String UPDATE = "UPDATE product SET name_of_item=?,description=?,tags=?,image_media_id=? WHERE id=?";
     
@@ -30,11 +30,13 @@ public class ProductQuery {
         boolean success = false;
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(ADD)){
-            ps.setInt(1, product.getId());
-            ps.setString(2, product.getNameOfItem());
-            ps.setString(3, product.getDescription());
-            ps.setString(4, product.getTags());
-            ps.setInt(5, product.getImgMediaId());
+            ps.setString(1, product.getNameOfItem());
+            ps.setString(2, product.getDescription());
+            ps.setString(3, product.getTags());
+            ps.setInt(4, product.getImgMediaId());
+            try(ResultSet rs = ps.getGeneratedKeys()){
+                product.setId(rs.getInt(1));
+            }
             
             success = ps.executeUpdate()==1;
         }catch(SQLException ex){

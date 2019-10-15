@@ -7,7 +7,7 @@ package com.rgu.ecommerce.model.commons;
  */
 public class City {
     private int cityId;
-    private int cityName;
+    private String cityName;
 
     public int getCityId() {
         return cityId;
@@ -17,11 +17,11 @@ public class City {
         this.cityId = cityId;
     }
 
-    public int getCityName() {
+    public String getCityName() {
         return cityName;
     }
 
-    public void setCityName(int cityName) {
+    public void setCityName(String cityName) {
         this.cityName = cityName;
     }
     

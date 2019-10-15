@@ -7,7 +7,7 @@ package com.rgu.ecommerce.model.commons;
  */
 public class Country {
     private int countryId;
-    private int countryName;
+    private String countryName;
 
     public int getCountryId() {
         return countryId;
@@ -17,11 +17,11 @@ public class Country {
         this.countryId = countryId;
     }
 
-    public int getCountryName() {
+    public String getCountryName() {
         return countryName;
     }
 
-    public void setCountryName(int countryName) {
+    public void setCountryName(String countryName) {
         this.countryName = countryName;
     }
     

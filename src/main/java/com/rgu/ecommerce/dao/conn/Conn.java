@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class Conn {
 
-    private static final DBParams DB_PARAMS = new DBParams(DBServer.MY_SQL, "localhost", "ecommerce", "root", "sql1");
+    private static final DBParams DB_PARAMS = new DBParams(DBServer.MY_SQL, "localhost", "e_commerce", "root", "sql12345");
     
     private static final HikariDataSource DATA_SOURCE1;
     private static final HikariConfig HIKARI_CONFIG1 = new HikariConfig();
