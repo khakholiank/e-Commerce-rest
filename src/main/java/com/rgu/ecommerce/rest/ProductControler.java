@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("product/")
 public class ProductControler {
     @PostMapping("add")
-    public static boolean add(@RequestBody Product p){
-        return ProductQuery.add(p);
+    public static Product add(@RequestBody Product p){
+        if( ProductQuery.add(p)){
+            return p;
+        }
+        return null;
     }
     
     @PutMapping("update")

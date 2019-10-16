@@ -15,11 +15,11 @@ import java.util.List;
  */
 public class CartQuery {
 
-    private static final String ADD = "INSERT INTO cart(id, product_id) VALUES(?,?)";
+    private static final String ADD = "INSERT INTO cart_item(id, product_id) VALUES(?,?)";
 
-    private static final String DELETE = "DELETE FROM cart WHERE id=? AND product_id=?";
+    private static final String DELETE = "DELETE FROM cart_item WHERE id=? AND product_id=?";
 
-    private static final String SELECT_BY_ID = "SELECT FROM cart WHERE id=?";
+    private static final String SELECT_BY_ID = "SELECT FROM cart_item WHERE id=?";
 
     public static boolean add(Cart c) {
         boolean success = false;

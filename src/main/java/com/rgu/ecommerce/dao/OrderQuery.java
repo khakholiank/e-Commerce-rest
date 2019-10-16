@@ -56,7 +56,9 @@ public class OrderQuery {
             ps.setDouble(12, o.getNetAmount());
             ps.setInt(13, o.getOrderStatus().getCode());
             try(ResultSet rs = ps.getGeneratedKeys()){
-                o.setId(rs.getInt(1));
+                while(rs.next()){
+                    o.setId(rs.getInt(1));
+                }
             }
             success = ps.executeUpdate() == 1;
 

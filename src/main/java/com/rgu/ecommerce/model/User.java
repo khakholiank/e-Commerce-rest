@@ -11,7 +11,8 @@ import java.time.LocalDate;
  */
 public class User {
     private int id;
-    private String name;
+    private String fName;
+    private String lNmae;
     private LocalDate birthDate;
     private UserType userType;
     private String occupation;
@@ -26,13 +27,23 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getfName() {
+        return fName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
+
+    public String getlNmae() {
+        return lNmae;
+    }
+
+    public void setlNmae(String lNmae) {
+        this.lNmae = lNmae;
+    }
+
+    
 
     
 

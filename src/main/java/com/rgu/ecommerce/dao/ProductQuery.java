@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.rgu.ecommerce.dao.conn.Conn;
+import java.sql.Statement;
 
 
 /**
@@ -29,13 +30,15 @@ public class ProductQuery {
     public static boolean add(Product product){
         boolean success = false;
         try(Connection con = Conn.getConnection();
-                PreparedStatement ps = con.prepareStatement(ADD)){
+                PreparedStatement ps = con.prepareStatement(ADD, Statement.RETURN_GENERATED_KEYS)){
             ps.setString(1, product.getNameOfItem());
             ps.setString(2, product.getDescription());
             ps.setString(3, product.getTags());
             ps.setInt(4, product.getImgMediaId());
             try(ResultSet rs = ps.getGeneratedKeys()){
-                product.setId(rs.getInt(1));
+                while(rs.next()){
+                    product.setId(rs.getInt(1));
+                }
             }
             
             success = ps.executeUpdate()==1;

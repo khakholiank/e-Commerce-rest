@@ -1,6 +1,7 @@
 
 package com.rgu.ecommerce.dao;
 
+import com.rgu.ecommerce.dao.commons.AddressQuery;
 import com.rgu.ecommerce.model.config.UserType;
 import com.rgu.ecommerce.model.User;
 import java.sql.Connection;
@@ -10,16 +11,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.rgu.ecommerce.dao.conn.Conn;
-import com.rgu.ecommerce.model.commons.Address;
 
 /**
  *
  * @author Nikit Khakholia
  */
 public class UserQuery {
-    private static final String ADD = "INSERT INTO user(name,dob,user_type,occupation, password,default_address_id) VALUES(?,?,?,?,?,?)";
+    private static final String ADD = "INSERT INTO user(id, f_name, l_name,dob,user_type,occupation, password,default_address_id) VALUES(?,?,?,?,?,?,?,?)";
     
-    private static final String UPDATE = "UPDATE user SET name=?,dob=?,user_type=?,occupation=?, password=?,default_address_id=? WHERE id=?";
+    private static final String UPDATE = "UPDATE user SET f_name=?, l_name=?,dob=?,user_type=?,occupation=?, password=?,default_address_id=? WHERE id=?";
     
     private static final String DELETE = "DELETE FROM user WHERE id=?";
     
@@ -37,15 +37,15 @@ public class UserQuery {
         boolean success = false;
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(ADD)){
-            ps.setString(2, u.getName());
-            ps.setDate(3, java.sql.Date.valueOf(u.getBirthDate()));
-            ps.setInt(4, u.getUserType().getCode());
-            ps.setString(5, u.getOccupation());
-            ps.setString(6, u.getPassword());
-            ps.setInt(7, u.getDefaultAddress().getAddressId());
-            try(ResultSet rs = ps.getGeneratedKeys()){
-                u.setId(rs.getInt(1));
-            }
+            ps.setInt(1, u.getId());
+            ps.setString(2, u.getfName());
+            ps.setString(3, u.getlNmae());
+            ps.setDate(4, java.sql.Date.valueOf(u.getBirthDate()));
+            ps.setInt(5, u.getUserType().getCode());
+            ps.setString(6, u.getOccupation());
+            ps.setString(7, u.getPassword());
+            ps.setInt(8, u.getDefaultAddress().getAddressId());
+            
             success=ps.executeUpdate()==1;
         }catch(SQLException ex){
             System.err.println(ex.toString());
@@ -58,13 +58,14 @@ public class UserQuery {
         boolean success = false;
         try(Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(UPDATE)){
-            ps.setString(1, u.getName());
-            ps.setDate(2, java.sql.Date.valueOf(u.getBirthDate()));
-            ps.setInt(3, u.getUserType().getCode());
-            ps.setString(4, u.getOccupation());
-            ps.setString(5, u.getPassword());
-            ps.setInt(6, u.getDefaultAddress().getAddressId());
-            ps.setInt(7, u.getId());
+            ps.setString(1, u.getfName());
+            ps.setString(2, u.getlNmae());
+            ps.setDate(3, java.sql.Date.valueOf(u.getBirthDate()));
+            ps.setInt(4, u.getUserType().getCode());
+            ps.setString(5, u.getOccupation());
+            ps.setString(6, u.getPassword());
+            ps.setInt(7, u.getDefaultAddress().getAddressId());
+            ps.setInt(8, u.getId());
 
             
             success=ps.executeUpdate()==1;
@@ -91,14 +92,13 @@ public class UserQuery {
     private static User mapObject(ResultSet rs)throws SQLException{
         User u = new User();
             u.setId(rs.getInt(1));
-            u.setName(rs.getString(2));
-            u.setBirthDate(rs.getDate(3).toLocalDate());
-            u.setUserType(UserType.valueOf(rs.getInt(4)));
-            u.setOccupation(rs.getString(5));
-            u.setPassword(rs.getString(6));
-            Address a = new Address();
-            a.setAddressId(rs.getInt(7));
-            u.setDefaultAddress(a);
+            u.setfName(rs.getString(2));
+            u.setlNmae(rs.getString(3));
+            u.setBirthDate(rs.getDate(4).toLocalDate());
+            u.setUserType(UserType.valueOf(rs.getInt(5)));
+            u.setOccupation(rs.getString(6));
+            u.setPassword(rs.getString(7));
+            u.setDefaultAddress(AddressQuery.selectAddressById(rs.getInt(8)));
         return u;
     }
     
