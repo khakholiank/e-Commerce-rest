@@ -46,6 +46,8 @@ public class OrderController {
     }
     @GetMapping("/all")
     public static List<Order> selectAllOrders(){
+                System.out.println("Sending Orders2");
+
         return OrderQuery.getAllOrders();
     }
 }

@@ -25,7 +25,7 @@ public class Conn {
             HIKARI_CONFIG1.setJdbcUrl(DB_PARAMS.getConnectionPath());
             HIKARI_CONFIG1.setUsername(DB_PARAMS.getUsername());
             HIKARI_CONFIG1.setPassword(DB_PARAMS.getPassword());
-            HIKARI_CONFIG1.setMaximumPoolSize(40);
+            HIKARI_CONFIG1.setMaximumPoolSize(100);
             HIKARI_CONFIG1.addDataSourceProperty("cachePrepStmts", true);
             HIKARI_CONFIG1.addDataSourceProperty("prepStmtCacheSize", 250);
             HIKARI_CONFIG1.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);

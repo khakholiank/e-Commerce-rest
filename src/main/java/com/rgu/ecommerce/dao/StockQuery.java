@@ -26,6 +26,10 @@ public class StockQuery {
     
     private static final String SELECT_BY_PRODUCT = "SELECT * FROM stock WHERE product_id=?";
     
+    private static final String SELECT_BY_CHEAPEST_PRODUCT = "SELECT min(rate) AS 'Minimum Rate' FROM stock WHERE product_id = ?";
+    
+    private static final String SELECT_BY_PRODUCT_AND_USER_ID = "SELECT * FROM stock WHERE product_id=? * seller_id=?";
+    
     public static boolean add(Stock s){
         boolean success = false;
         try(Connection con = Conn.getConnection();
@@ -118,5 +122,39 @@ public class StockQuery {
             return null;
         }
         return list;
+    }
+    
+    public static Stock selectByProductAndUserId(int productId, int sellerId){
+        Stock stock = new Stock();
+        try(Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT_BY_PRODUCT_AND_USER_ID)){
+            ps.setInt(1, productId);
+            ps.setInt(2, sellerId);
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    stock = mapObject(rs);
+                }
+            }
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+            return null;
+        }
+        return stock;
+    }
+    
+    public static double selectCheapestRateOfProduct(int productId){
+        double rate = 0;
+        try(Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT_BY_CHEAPEST_PRODUCT)){
+            ps.setInt(1, productId);
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    rate = rs.getDouble(1);
+                }
+            }
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+            }
+        return rate;
     }
 }

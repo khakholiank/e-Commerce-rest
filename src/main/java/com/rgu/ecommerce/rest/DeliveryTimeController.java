@@ -30,8 +30,8 @@ public class DeliveryTimeController {
         return DeliveryTimeQuery.update(dt);
     }
     
-    @DeleteMapping("delete/{fid,tid}")
-    public boolean delete(@PathVariable int fid, int tid){
+    @DeleteMapping("delete/{fid}/{tid}")
+    public boolean delete(@PathVariable int fid,@PathVariable int tid){
         return DeliveryTimeQuery.delete(fid, tid);
     }
     
@@ -40,8 +40,8 @@ public class DeliveryTimeController {
         return DeliveryTimeQuery.getAllDeliveryTime();
     }
     
-    @GetMapping("{fid,tid}")
-    public DeliveryTime selectById(@PathVariable int fid, int tid){
+    @GetMapping("{fid}/{tid}")
+    public DeliveryTime selectById(@PathVariable int fid,@PathVariable int tid){
         return DeliveryTimeQuery.getDeliveryTimeById(fid, tid);
     }
 }

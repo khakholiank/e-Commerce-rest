@@ -9,7 +9,7 @@ import com.rgu.ecommerce.model.User;
  */
 public class Address {
     private int addressId;
-    private User userId;
+    private int userId;
     private String line1;
     private String line2;
     private Locality locality;
@@ -58,11 +58,11 @@ public class Address {
         this.phone = phone;
     }
 
-    public User getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

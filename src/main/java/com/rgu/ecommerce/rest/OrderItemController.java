@@ -6,6 +6,7 @@
 package com.rgu.ecommerce.rest;
 
 import com.rgu.ecommerce.dao.OrderItemQuery;
+import com.rgu.ecommerce.model.CartItem;
 import com.rgu.ecommerce.model.OrderItem;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("orderitem/")
 public class OrderItemController {
     @PostMapping("add")
-    public static boolean add(@RequestBody OrderItem oi){
-        return OrderItemQuery.add(oi);
+    public static boolean add(@RequestBody List<CartItem> orderItems){
+        return OrderItemQuery.add(orderItems);
     }
     
     @PutMapping("update")

@@ -17,9 +17,9 @@ import java.sql.Statement;
  * @author Nikit Khakholia
  */
 public class ProductQuery {
-    private static final String ADD = "INSERT INTO product(name_of_item,description,tags,image_media_id) VALUES(?,?,?,?)";
+    private static final String ADD = "INSERT INTO product(name_of_item,description,tags,image_media_id,brand,sub_category_id) VALUES(?,?,?,?)";
     
-    private static final String UPDATE = "UPDATE product SET name_of_item=?,description=?,tags=?,image_media_id=? WHERE id=?";
+    private static final String UPDATE = "UPDATE product SET name_of_item=?,description=?,tags=?,image_media_id=? brand=?, sub_category_id=? WHERE id=?";
     
     private static final String DELETE = "DELETE from product WHERE id=?";
     
@@ -35,6 +35,8 @@ public class ProductQuery {
             ps.setString(2, product.getDescription());
             ps.setString(3, product.getTags());
             ps.setInt(4, product.getImgMediaId());
+            ps.setString(5, product.getBrand());
+            ps.setInt(6, product.getSubCategoryId());
             try(ResultSet rs = ps.getGeneratedKeys()){
                 while(rs.next()){
                     product.setId(rs.getInt(1));
@@ -57,6 +59,8 @@ public class ProductQuery {
             ps.setString(2, product.getDescription());
             ps.setString(3, product.getTags());
             ps.setInt(4, product.getImgMediaId());
+            ps.setString(5, product.getBrand());
+            ps.setInt(6, product.getSubCategoryId());
             
             ps.setInt(5, product.getId());
 
@@ -90,9 +94,18 @@ public class ProductQuery {
             product.setDescription(rs.getString(3));
             product.setTags(rs.getString(4));
             product.setImgMediaId(rs.getInt(5));
+            product.setBrand(rs.getString(6));
+            product.setSubCategoryId(rs.getInt(7));
+            
+            
+            
+//            product.setStocks(StockQuery.selectByProduct(product.getId()));
+            product.setPrice(StockQuery.selectCheapestRateOfProduct(rs.getInt(1)));
+            
             
         return product;
     }
+    
     
     public static Product selectProductById(int id){
         Product product = new Product();

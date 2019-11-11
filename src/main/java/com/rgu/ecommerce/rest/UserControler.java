@@ -2,7 +2,9 @@
 package com.rgu.ecommerce.rest;
 
 import com.rgu.ecommerce.dao.UserQuery;
+import com.rgu.ecommerce.dao.commons.AddressQuery;
 import com.rgu.ecommerce.model.User;
+import com.rgu.ecommerce.model.commons.Address;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,6 +62,16 @@ public class UserControler {
     @GetMapping("admin/all")
     public static List<User> selectAdmins(){
         return UserQuery.selectAdmins();
+    }
+    
+    @GetMapping("verify/{id}/{password}")
+    public static boolean verifyUser(@PathVariable int id, @PathVariable String password){
+        return UserQuery.verifyUser(id, password);
+    }
+    
+    @GetMapping("address/id/{id}")
+    public static List<Address> selectAddressByUser(@PathVariable int id){
+        return AddressQuery.selectAddressByUserId(id);
     }
     
 }

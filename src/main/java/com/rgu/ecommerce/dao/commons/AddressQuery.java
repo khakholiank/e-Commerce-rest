@@ -19,11 +19,11 @@ import java.util.List;
 public class AddressQuery {
     private static String ADD = "INSERT INTO address(line_1, line_2, locality_id, phone, user_id) VALUES(?,?,?,?,?)";
     
-    private static String UPDATE = "UPDATE address SET line_1=?, line_2=?, locality_id=?, phone=?, user_id=? WHERE id =?";
+    private static String UPDATE = "UPDATE address SET line_1=?, line_2=?, locality_id=?, phone=?, user_id=? WHERE address_id =?";
     
-    private static String DELETE = "DELETE FROM address WHERE id=?";
+    private static String DELETE = "DELETE FROM address WHERE address_id=?";
     
-    private static String SELECT_BY_ID = "SELECT * FROM address WHERE id=?";
+    private static String SELECT_BY_ID = "SELECT * FROM address WHERE address_id=?";
     
     private static String SELECT_BY_USER_ID = "SELECT * FROM address WHERE user_id=?";
     
@@ -36,7 +36,7 @@ public class AddressQuery {
             ps.setString(2, a.getLine2());
             ps.setInt(3, a.getLocality().getLocalityId());
             ps.setInt(4, a.getPhone());
-            ps.setInt(5, a.getUserId().getId());
+            ps.setInt(5, a.getAddressId());
             
             try(ResultSet rs = ps.getGeneratedKeys()){
                     if(rs.next()){
@@ -58,9 +58,9 @@ public class AddressQuery {
             ps.setString(2, a.getLine2());
             ps.setInt(3, a.getLocality().getLocalityId());
             ps.setInt(4, a.getPhone());
-            ps.setInt(5, a.getUserId().getId());
+            ps.setInt(5, a.getAddressId());
             
-            ps.setInt(6, a.getUserId().getId());
+            ps.setInt(6, a.getUserId());
             success = ps.executeUpdate()==1;
         }catch(SQLException e){
             System.err.println("Error... "+e.toString());
@@ -76,7 +76,7 @@ public class AddressQuery {
         a.setLine2(rs.getString(3));
         a.setLocality(LocalityQuery.selectById(rs.getInt(4)));
         a.setPhone(rs.getInt(5));
-        a.setUserId(UserQuery.selectUserById(rs.getInt(6)));
+        a.setUserId(rs.getInt(6));
         return a;
     }
     
