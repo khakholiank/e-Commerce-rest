@@ -62,7 +62,7 @@ public class ProductQuery {
             ps.setString(5, product.getBrand());
             ps.setInt(6, product.getSubCategoryId());
             
-            ps.setInt(5, product.getId());
+            ps.setInt(7, product.getId());
 
             
             success = ps.executeUpdate()==1;
