@@ -25,15 +25,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("orderitem/")
 public class OrderItemController {
     @PostMapping("add")
-    public static boolean add(@RequestBody List<CartItem> orderItems){
+    public static boolean add(@RequestBody List<OrderItem> orderItems){
         return OrderItemQuery.add(orderItems);
     }
     
-    @PutMapping("update")
-    public static boolean update(@RequestBody OrderItem oi){
-        return OrderItemQuery.update(oi);
-    }
-    
+//    @PutMapping("update")
+//    public static boolean update(@RequestBody OrderItem oi){
+//        return OrderItemQuery.update(oi);
+//    }
+
     @GetMapping("id/{id}")
     public static List<OrderItem> getOrderItemsByOrderId(@PathVariable int id){
         return OrderItemQuery.getOrderItemsById(id);

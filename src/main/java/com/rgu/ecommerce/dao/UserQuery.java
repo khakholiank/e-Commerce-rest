@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.rgu.ecommerce.dao.conn.Conn;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 
 /**
  *
@@ -35,6 +34,8 @@ public class UserQuery {
     private static final String SELECT_BUYERS = "SELECT * FROM user WHERE user_type=1";
 
     private static final String SELECT_ADMIN = "SELECT * FROM user WHERE user_type=2";
+    
+    private static final String VERIFY_MOBILE = "SELECT id FROM user WHERE id=?";
 
     public static boolean add(User u) {
         boolean success = false;
@@ -47,7 +48,7 @@ public class UserQuery {
             ps.setInt(5, u.getUserType().getCode());
             ps.setString(6, u.getOccupation());
             ps.setString(7, u.getPassword());
-            ps.setInt(8, u.getDefaultAddress().getAddressId());
+            ps.setInt(8, 2);
 
             success = ps.executeUpdate() == 1;
         } catch (SQLException ex) {
@@ -200,6 +201,26 @@ public class UserQuery {
             System.err.println(e.toString());
         }
         if (password.equals(u.getPassword())) {
+            success = true;
+        }
+        return success;
+    }
+    public static boolean verifyMobile(int id) {
+        boolean success = false;
+        User u = new User();
+
+        try (Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareCall(VERIFY_MOBILE)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    u.setId(rs.getInt(1));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.toString());
+        }
+        if (id==u.getId()) {
             success = true;
         }
         return success;

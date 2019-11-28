@@ -3,29 +3,15 @@ package com.rgu.ecommerce.model;
 
 import com.rgu.ecommerce.model.commons.Address;
 import com.rgu.ecommerce.model.config.OrderStatus;
-import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
  * @author Nikit Khakholia
  */
 public class Order {
+    
     private int id;
-//    private int sellerId;
-    private int custId;
-    private LocalDateTime timeOfOrder;
-//    private Address deliveryAddress;
-    private Address billingAddress;
-//    private Product product;
-//    private int qty;
-//    private String trackingId;
-//    private LocalDateTime estDeliveryTime;
-    private String promoCode;
-    private double grossAmount;
-    private double discApplied;
-    private double deliveryFee;
-    private double netAmount;
-    private OrderStatus orderStatus;
 
     public int getId() {
         return id;
@@ -34,29 +20,49 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
+    
+    
+    private User user;
+    private Address bAddress;
+    private String promoCode;
+    private double grossAmount;
+    private double discApplied;
+    private double deliveryFee;
+    private List<OrderItem> orderItems;
+    private OrderStatus orderStatus;
+    private double netAmt;
 
-    public int getCustId() {
-        return custId;
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setCustId(int custId) {
-        this.custId = custId;
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
-    public LocalDateTime getTimeOfOrder() {
-        return timeOfOrder;
+    public double getNetAmt() {
+        return netAmt;
     }
 
-    public void setTimeOfOrder(LocalDateTime timeOfOrder) {
-        this.timeOfOrder = timeOfOrder;
+    public void setNetAmt(double netAmt) {
+        this.netAmt = netAmt;
+    }
+    
+
+    public User getUser() {
+        return user;
     }
 
-    public Address getBillingAddress() {
-        return billingAddress;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setBillingAddress(Address billingAddress) {
-        this.billingAddress = billingAddress;
+    public Address getbAddress() {
+        return bAddress;
+    }
+
+    public void setbAddress(Address bAddress) {
+        this.bAddress = bAddress;
     }
 
     public String getPromoCode() {
@@ -91,22 +97,23 @@ public class Order {
         this.deliveryFee = deliveryFee;
     }
 
-    public double getNetAmount() {
-        return netAmount;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setNetAmount(double netAmount) {
-        this.netAmount = netAmount;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
-
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

@@ -30,6 +30,8 @@ public class StockQuery {
     
     private static final String SELECT_BY_PRODUCT_AND_USER_ID = "SELECT * FROM stock WHERE product_id=? * seller_id=?";
     
+    private static final String SELECT_BY_SELLER = "SELECT * FROM stock WHERE seller_id=?";
+    
     public static boolean add(Stock s){
         boolean success = false;
         try(Connection con = Conn.getConnection();
@@ -85,7 +87,7 @@ public class StockQuery {
         Stock s = new Stock();
         s.setHubId(rs.getInt(1));
         s.setProductId(ProductQuery.selectProductById(rs.getInt(2)));
-        s.setSellerId(UserQuery.selectUserById(rs.getInt(3)));
+        s.setSellerId(SellerQuery.selectSellerById(rs.getInt(3)));
         s.setQty(rs.getInt(4));
         s.setRate(rs.getDouble(5));
         return s;
@@ -156,5 +158,21 @@ public class StockQuery {
             System.err.println(ex.toString());
             }
         return rate;
+    }
+    
+    public static List<Stock> selectStockBySellerId(int id){
+        List<Stock> stocks = new ArrayList<>();
+        try(Connection con = Conn.getConnection();
+                PreparedStatement ps = con.prepareStatement(SELECT_BY_SELLER)){
+            ps.setInt(1, id);
+            try(ResultSet rs = ps.executeQuery()){
+                while(rs.next()){
+                    stocks.add(mapObject(rs));
+                }
+            }
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+        }
+        return stocks;
     }
 }

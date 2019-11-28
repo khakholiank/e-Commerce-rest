@@ -44,26 +44,28 @@ public class OrderQuery {
         boolean success = false;
         try (Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(ADD, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setInt(1, o.getCustId());
+            ps.setInt(1, o.getUser().getId());
             ps.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
-            ps.setInt(3, 1);
-            ps.setString(4, AddressQuery.selectAddressById(1).getLine1());
-            ps.setString(5, AddressQuery.selectAddressById(1).getLine2());
-            ps.setInt(6, 1);
-            ps.setInt(7, AddressQuery.selectAddressById(1).getPhone());
-
-            ps.setString(8, "  ");
-            ps.setDouble(9, 100);
-            ps.setDouble(10, 0);
-            ps.setDouble(11, 0);
-            ps.setDouble(12, 0);
-            ps.setInt(13, 1);
+            ps.setInt(3, o.getbAddress().getAddressId());
+            ps.setString(4, AddressQuery.selectAddressById(o.getbAddress().getAddressId()).getLine1());
+            ps.setString(5, AddressQuery.selectAddressById(o.getbAddress().getAddressId()).getLine2());
+            ps.setInt(6, o.getbAddress().getLocality().getLocalityId());
+            ps.setInt(7, AddressQuery.selectAddressById(o.getbAddress().getAddressId()).getPhone());
+            ps.setString(8,o.getPromoCode());
+            ps.setDouble(9, o.getGrossAmount());
+            ps.setDouble(10, o.getDiscApplied());
+            ps.setDouble(11, o.getDeliveryFee());
+            ps.setDouble(12, o.getGrossAmount()-o.getDiscApplied()+o.getDeliveryFee());
+            ps.setInt(13, o.getOrderStatus().getCode());
             try(ResultSet rs = ps.getGeneratedKeys()){
                 while(rs.next()){
                     o.setId(rs.getInt(1));
                 }
             }
             success = ps.executeUpdate() == 1;
+            if(success){
+                OrderItemQuery.add(o.getOrderItems());
+            }
 
         } catch (SQLException ex) {
             System.err.println(ex.toString());
@@ -76,23 +78,20 @@ public class OrderQuery {
         boolean success = false;
         try (Connection con = Conn.getConnection();
                 PreparedStatement ps = con.prepareStatement(UPDATE)) {
-            ps.setInt(1, o.getCustId());
-            ps.setTimestamp(2, java.sql.Timestamp.valueOf(o.getTimeOfOrder()));
-
-            ps.setInt(3, o.getBillingAddress().getAddressId());
-            ps.setString(4, o.getBillingAddress().getLine1());
-            ps.setString(5, o.getBillingAddress().getLine2());
-            ps.setInt(6, o.getBillingAddress().getLocality().getLocalityId());
-
-            ps.setInt(7, o.getBillingAddress().getPhone());
-
-            ps.setString(8, o.getPromoCode());
+            ps.setInt(1, o.getUser().getId());
+            ps.setTimestamp(2, java.sql.Timestamp.valueOf(LocalDateTime.now()));
+            ps.setInt(3, o.getbAddress().getAddressId());
+            ps.setString(4, AddressQuery.selectAddressById(o.getbAddress().getAddressId()).getLine1());
+            ps.setString(5, AddressQuery.selectAddressById(o.getbAddress().getAddressId()).getLine2());
+            ps.setInt(6, o.getbAddress().getLocality().getLocalityId());
+            ps.setInt(7, AddressQuery.selectAddressById(o.getbAddress().getAddressId()).getPhone());
+            ps.setString(8,o.getPromoCode());
             ps.setDouble(9, o.getGrossAmount());
             ps.setDouble(10, o.getDiscApplied());
             ps.setDouble(11, o.getDeliveryFee());
-            ps.setDouble(12, o.getNetAmount());
+            ps.setDouble(12, o.getGrossAmount()-o.getDiscApplied()+o.getDeliveryFee());
             ps.setInt(13, o.getOrderStatus().getCode());
-
+            
             ps.setInt(14, o.getId());
 
             success = ps.executeUpdate() == 1;
@@ -120,19 +119,19 @@ public class OrderQuery {
     private static Order mapObject(ResultSet rs) throws SQLException {
         Order o = new Order();
         o.setId(rs.getInt(1));
-        o.setCustId(rs.getInt(2));
-        o.setTimeOfOrder(rs.getTimestamp(3).toLocalDateTime());
+        o.setUser(UserQuery.selectUserById(rs.getInt(2)));
+//        o.set(rs.getTimestamp(3).toLocalDateTime());
         Address bA = new Address();
         bA.setAddressId(rs.getInt(4));
         bA.setLine1(rs.getString(5));
         bA.setLine2(rs.getString(6));
-//        bA.setLocality(LocalityQuery.selectById(rs.getInt(7)));
+        bA.setLocality(LocalityQuery.selectById(rs.getInt(7)));
         bA.setPhone(rs.getInt(8));
         o.setPromoCode(rs.getString(9));
         o.setGrossAmount(rs.getDouble(10));
         o.setDiscApplied(rs.getDouble(11));
         o.setDeliveryFee(rs.getDouble(12));
-        o.setNetAmount(rs.getDouble(13));
+        o.setNetAmt(rs.getDouble(13));
         o.setOrderStatus(OrderStatus.valueOf(rs.getInt(14)));
 
         return o;
@@ -202,7 +201,6 @@ public class OrderQuery {
             System.err.println(ex.toString());
             return null;
         }
-        System.out.println("Sending Orders");
         return list;
     }
 

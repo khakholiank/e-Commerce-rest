@@ -73,5 +73,9 @@ public class UserControler {
     public static List<Address> selectAddressByUser(@PathVariable int id){
         return AddressQuery.selectAddressByUserId(id);
     }
+    @GetMapping("mobile/{id}")
+    public static boolean verifyMobile(@PathVariable int id){
+        return UserQuery.verifyMobile(id);
+    }
     
 }

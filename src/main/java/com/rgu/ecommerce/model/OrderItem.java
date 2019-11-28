@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class OrderItem {
 
     private int orderId;
-    private int sellerId;
+    private Seller seller;
     private Address deliveryAddress;
     private Product product;
     private int qty;
@@ -25,15 +25,15 @@ public class OrderItem {
         this.orderId = orderId;
     }
 
-    
-    
-    public int getSellerId() {
-        return sellerId;
+    public Seller getSeller() {
+        return seller;
     }
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
+
+    
 
     public Address getDeliveryAddress() {
         return deliveryAddress;

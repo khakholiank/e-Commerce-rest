@@ -44,4 +44,9 @@ public class StockControler {
     public static List<Stock> selectByProductId(@PathVariable int id){
         return StockQuery.selectByProduct(id);
     }
+    
+    @GetMapping("seller/{id}")
+    public static List<Stock> selectStockBySeller(@PathVariable int id){
+        return StockQuery.selectStockBySellerId(id);
+    }
 }

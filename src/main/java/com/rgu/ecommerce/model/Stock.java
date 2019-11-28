@@ -10,7 +10,7 @@ import com.rgu.ecommerce.model.config.UnitType;
 public class Stock {
     private int hubId;
     private Product productId;
-    private User sellerId;
+    private Seller sellerId;
     private int qty;
     private Double rate;
     private UnitType units;
@@ -32,11 +32,11 @@ public class Stock {
         this.productId = productId;
     }
 
-    public User getSellerId() {
+    public Seller getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(User sellerId) {
+    public void setSellerId(Seller sellerId) {
         this.sellerId = sellerId;
     }
 

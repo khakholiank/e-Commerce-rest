@@ -8,32 +8,36 @@ import com.rgu.ecommerce.model.config.UnitType;
  * @author Nikit Khakholia
  */
 public class CartItem {
-    private int userId;
-    private Product products;
-    
+    private User userId;
+    private Product productId;
     private Double qty;
     private UnitType unitType;
-    
-    private User sellerId;
-    private Stock rate;
-    
-    
+    private Seller sellerId;
+    private Double rate;
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
     
 
-    public int getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    public Product getProducts() {
-        return products;
+    public Product getProductId() {
+        return productId;
     }
 
-    public void setProducts(Product products) {
-        this.products = products;
+    public void setProductId(Product productId) {
+        this.productId = productId;
     }
 
     public Double getQty() {
@@ -52,28 +56,13 @@ public class CartItem {
         this.unitType = unitType;
     }
 
-    public User getSellerId() {
+    public Seller getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(User seller_id) {
-        this.sellerId = seller_id;
+    public void setSellerId(Seller sellerId) {
+        this.sellerId = sellerId;
     }
 
-    public Stock getRate() {
-        return rate;
-    }
-
-    public void setRate(Stock rate) {
-        this.rate = rate;
-    }
-
-
     
-
-    
-    
-
-
-
 }
